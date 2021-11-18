@@ -14,7 +14,11 @@
         3. Reactor
         
         4. functional programming
-        
+          vs mvc controller
+          
         5. reactive programming
+          mono
+          flux
         
+        6. blockhound
     
