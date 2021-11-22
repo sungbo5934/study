@@ -31,3 +31,10 @@
 
 
 ## 2. Spring Cloud Gateway
+
+* 사용 이유 ( vs Netflix Zuul )
+
+* 기본 구조
+   * Route
+   * Predicate
+   * Filter
