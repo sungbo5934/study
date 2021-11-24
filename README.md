@@ -34,14 +34,14 @@
 * 구조
 
 * vs Netflix Zuul
-      * SCG
+   * SCG
       ![image](https://user-images.githubusercontent.com/33863965/142961838-b9699ef2-593d-45ce-bb88-8eb883eb57c2.png)
-      그림출처: https://velog.io/@tlatldms/서버개발캠프-MSA-아키텍쳐의-API-Gateway-프레임워크-결정
-         * Netty HttpClient
-      * Zuul
+         그림출처: https://velog.io/@tlatldms/서버개발캠프-MSA-아키텍쳐의-API-Gateway-프레임워크-결정
+      * Netty HttpClient
+   * Zuul
       ![image](https://user-images.githubusercontent.com/33863965/142961951-b9f1a601-7998-4d84-803d-f9b66b4b19f2.png)
-      그림출처: https://velog.io/@tlatldms/서버개발캠프-MSA-아키텍쳐의-API-Gateway-프레임워크-결정
-         * Apache HttpClient
+         그림출처: https://velog.io/@tlatldms/서버개발캠프-MSA-아키텍쳐의-API-Gateway-프레임워크-결정
+      * Apache HttpClient
 * 기본 구조
    * Route : 라우트는 목적 URI, 조건자 목록과 필터의 목록을 식별하기 위한 고유 ID로 구성된다. 라우트는 모든 조건자가 충족됐을 떄만 매칭된다.
    * Predicate : 각 오청을 처리하기 전에 실행되는 로직, 헤더와 입력된 값 등 다양한 HTTP 요청이 정의돈 기준에 맞는지를 찾는다. ( path=/abc, request header의 특징 및 토큰 조건 )
