@@ -15,20 +15,18 @@
       * 비동기식 호출은 서비스를 호출한 후 즉시 응답을 받고, 다른 작업을 하다가 처리가 완료되었는지 확인하여 결과를 받는 방식이다. 즉, 함수의 결과를 호출한 쪽에서 처리하지 않는다. 동기식 호출은 서비스가 종료될 때까지 호출자가 마냥 기다려야 하므로 컴퓨팅 자원을 비효율적으로 사용할 수밖에 없지만, 비동기식 호출은 요청 결과를 기다리는 시간에 다른 작업을 수행할 수 있으므로 효율적으로 자원을 사용할 수 있다.
     * 블록킹 논블록킹
       * 소켓의 동작 방식은 블로킹(Blocking) 모드와 논블로킹(Non-Blocking) 모드로 나뉜다. 블로킹은 요청한 작업이 성공하거나 에러가 발생하기 전까지는 응답을 돌려주지 않는 것을 말하며 논블로킹은 요청한 작업의 성공 여부와 상관없이 바로 결과를 돌려주는 것을 말한다. 이때 요청의 응답값에 의해서 에러나 성공 여부를 판단한다.
-          
-* Reactive
 
 * Backpressure 
         
-* functional programming
+* Functional Programming
     * vs mvc controller
           
-* reactive programming
-    * mono
-    * flux
+* Reactive Programming
+   * Reactive 
+   * Mono
+   * Flux
         
-* blockhound
-
+* Blockhound
 
 ## 2. Spring Cloud Gateway
 * 구조
