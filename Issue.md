@@ -1,6 +1,6 @@
 
 # Feign. 
-  https://spring.io/projects/spring-cloud-openfeign
+  https://spring.io/projects/spring-cloud-openfeign.  
   https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/
   ## client ( okhttp )
       // feign.okhttp.OkHttpClient.class 참조
