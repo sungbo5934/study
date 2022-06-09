@@ -1,6 +1,7 @@
 
 # Feign. 
   https://spring.io/projects/spring-cloud-openfeign
+  https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/
   ## client ( okhttp )
       // feign.okhttp.OkHttpClient.class 참조
   * okhttp의 경우 readtimeout, connectTimeoutMillis 등이 Feign.Builder 의 Request.Options()의 timeout 보다 우선 순위가 낮은걸 유의
