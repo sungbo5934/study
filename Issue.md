@@ -2,12 +2,13 @@
 # Feign. 
   https://spring.io/projects/spring-cloud-openfeign.  
   https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/
+  ## config
+   * FeignAutoConfiguration.class에 의해 필요 bean들이 등록됨 bean 충돌 대비
+    + @configuration 관련 https://blog.leocat.kr/notes/2019/03/27/feign-open-feign-configuration
+    + @Scope("prototype")을 이용하여 충돌을 피할 수 있음
   ## client ( okhttp )
       // feign.okhttp.OkHttpClient.class 참조
   * okhttp의 경우 readtimeout, connectTimeoutMillis 등이 Feign.Builder 의 Request.Options()의 timeout 보다 우선 순위가 낮은걸 유의
-  * FeignAutoConfiguration.class에 의해 필요 bean들이 등록됨 bean 충돌 대비
-    + @configuration 관련 https://blog.leocat.kr/notes/2019/03/27/feign-open-feign-configuration
-    + @Scope("prototype")을 이용하여 충돌을 피할 수 있음
   * okhttp는 단일 인스턴스로 모든 http 요청을해야한다. connection pool과 스레드 풀이 공유되니 때문에 재사용하기 좋다.  
       + 참고 : https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client )
       + 단일인스턴스라고 하지만 외부 네트워크 api 호출 시 okhttpclient의 디버그를 걸면 항상 hashcode(), 즉 인스턴스의 주소값이 다르다. 이유를 알아보자.. 
