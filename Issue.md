@@ -4,10 +4,10 @@
   https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/
   ## config
    * FeignAutoConfiguration.class에 의해 필요 bean들이 등록됨 bean 충돌 대비
-    + @configuration 관련 https://blog.leocat.kr/notes/2019/03/27/feign-open-feign-configuration
-    + @Scope("prototype")을 이용하여 충돌을 피할 수 있음
+      + @configuration 관련 https://blog.leocat.kr/notes/2019/03/27/feign-open-feign-configuration
+      + @Scope("prototype")을 이용하여 충돌을 피할 수 있음
    * feign client 마다 따로 config class를 두는 방식으로 한다면 FeignClientFactoryBean.class 파일의 configureUsingConfiguration() 함수를 통해 custom하게 정의된 bean들이 등록됨
-    + 해당 메소드안을 보면 사용자가 bean을 따로 만들지 않았으면 inner class인 Builder 를 통해 default로 정의
+      + 해당 메소드안을 보면 사용자가 bean을 따로 만들지 않았으면 inner class인 Builder 를 통해 default로 정의
   ## client ( okhttp )
       // feign.okhttp.OkHttpClient.class 참조
   * okhttp의 경우 readtimeout, connectTimeoutMillis 등이 Feign.Builder 의 Request.Options()의 timeout 보다 우선 순위가 낮은걸 유의
