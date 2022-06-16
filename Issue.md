@@ -11,9 +11,9 @@
    * 위의 그림에서는 설정 파일을 관리하는 point가 git이지만 redis, s3, jdbc(db) 등 다양한 저장소로 관리할 수 있음, 위의 공식 가이드 문서 확인
    * 순서
       + 사용자(admin)가 git, redis등 저장소에 설정파일을 push 및 변경
-      + client 서버에서 config 서버로 필요한 설정값 요청 <span style="color:red"> ( /actuator/refresh API ) </span>
+      + client 서버에서 config 서버로 필요한 설정값 요청 **( /actuator/refresh API )**
       + config 서버는 요청을 받으면 서버 기동시 등록해둔 url 및 endpoint로 해당 요청에 맞는 설정파일을 읽어 응답
       + client 서버는 응답받은 값으로 재기동 없이 변경 ( ex: @value 를 사용하여 변수 할당 시 )
     
    ### 고려사항
-    * 현재에도 서버에 api 호출을 통해 threshold를 변경하고 있는데 
+   * 현재에도 서버에 api 호출을 통해 threshold를 변경하고 있는데 보안상 좋지 않아 중앙에서 관리 해주는 point가 필요했지만 cloud config 역시 중간에 Spring Cloud Bus, rabbitMQ를 통해야만 **/actuator/refresh API** 호출 없이 실시간 변경이 가능
