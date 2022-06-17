@@ -17,3 +17,7 @@
     
    ### 고려사항
    * 현재에도 서버에 api 호출을 통해 threshold를 변경하고 있는데 보안상 좋지 않아 중앙에서 관리 해주는 point가 필요했지만 cloud config 역시 중간에 Spring Cloud Bus, rabbitMQ를 통해야만 **/actuator/refresh API** 호출 없이 실시간 변경이 가능
+
+  ## RequestContextHolder
+    https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/context/request/RequestContextHolder.html
+   * 코루틴 ( 별도 스레드 )을 통한 현재 request 이용 시 다수의 트레픽이 발생하면 NPE 발생으로 인해 
