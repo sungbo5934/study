@@ -20,4 +20,4 @@
 
   ## RequestContextHolder
     https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/context/request/RequestContextHolder.html
-   * 코루틴 ( 별도 스레드 )을 통한 현재 request 이용 시 다수의 트레픽이 발생하면 NPE 발생으로 인해 
+   * 코루틴 ( 별도 스레드 )을 통한 현재 request 이용 시 다수의 트레픽이 발생하면 NPE 발생으로 인해 공부진행
