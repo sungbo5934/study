@@ -21,3 +21,8 @@
   ## RequestContextHolder
     https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/context/request/RequestContextHolder.html
    * 코루틴 ( 별도 스레드 )을 통한 현재 request 이용 시 다수의 트레픽이 발생하면 NPE 발생으로 인해 공부진행
+   ### 특징
+   *  Spring에서 전역으로 Request에 대한 정보를 가져오고자 할 때 사용하는 유틸성 클래스
+   *  Controller에서 HttpServletRequest 생성자 주입을 통한 request 객체를 받아오는게아니라 Business Layer나 다른 쪽에서 쉽게 request정보를 가저올 수 있음
+   *  ThreadLocal의 값이므로 다른 쓰레드(new Thread, 혹은 executor를 사용한 ThreadPool에서의 참조 등) 에서는 RequestContextHolder 의 Request값을 꺼내 쓸 수 없음
+   *  HttpRequest가 오는 시점에 Servlet이 생성될 때에 초기화가 되어지고 Business Layer를 거친 뒤 Servlet 이 destroy될 때 clean 
