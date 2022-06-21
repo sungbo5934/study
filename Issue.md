@@ -26,3 +26,7 @@
    *  Controller에서 HttpServletRequest 생성자 주입을 통한 request 객체를 받아오는게아니라 Business Layer나 다른 쪽에서 쉽게 request정보를 가저올 수 있음
    *  ThreadLocal의 값이므로 다른 쓰레드(new Thread, 혹은 executor를 사용한 ThreadPool에서의 참조 등) 에서는 RequestContextHolder 의 Request값을 꺼내 쓸 수 없음
    *  HttpRequest가 오는 시점에 Servlet이 생성될 때에 초기화가 되어지고 Business Layer를 거친 뒤 Servlet 이 destroy될 때 clean 
+  
+  ## Log
+  
+  ## Content-Type
