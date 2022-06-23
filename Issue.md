@@ -28,7 +28,12 @@
    *  HttpRequest가 오는 시점에 Servlet이 생성될 때에 초기화가 되어지고 Business Layer를 거친 뒤 Servlet 이 destroy될 때 clean 
   
   ## Log
+   * Log적재 시스템의 호출 실패 및 적재 실패시 해당 로그가 유실이 됨을 대응하고자 공부진행
+  
   
   ## Content-Type
+   * 이미지를 처리하는 시스템에서 이미지타입 (jpeg, png..)가 중요함
   
   ## ImageIO
+   * ImageIO를 통한 read()시 깨진 이미지나 읽지 못하는 이미지타입을 방어하는 로직이 없으면 안됨
+   * ImageIO는 java에서 업데이틑 하고 있지 않으므로 다양한 구현체(TwelveMonkeys, JAI 등)를 이용하여 구현할 수 있음
