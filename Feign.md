@@ -18,3 +18,4 @@
       + 참고 : https://github.com/square/okhttp/issues/3907, https://stackoverflow.com/questions/46206267/okhttp-how-to-set-maximum-connection-pool-size-not-max-idle-connections
       + IdleConnection : 활성 상태이지만 장기간 동안 어느 쪽 장치에서도 데이터가 전송되지 않은 커넥션 , keepalive time : 해당 시간 동안 통신이 없다면 커넥션은 죽임
    * 위의 connection pool 관련 의문은 sync방법이지만 async 방식에서는 Dispatcher.class를 이용하여 maxrequest, per request, excuterservice(thread pool) 등을 지정할수 있다.(이 부분은 아직 실험 x)
+  ## circuit breaker
