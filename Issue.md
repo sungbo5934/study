@@ -20,17 +20,22 @@
 
   ## RequestContextHolder
     https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/context/request/RequestContextHolder.html
-   * 코루틴 ( 별도 스레드 )을 통한 현재 request 이용 시 다수의 트레픽이 발생하면 NPE 발생으로 인해 공부진행
+   * 코루틴 ( 별도 스레드 )을 통한 현재 request 객체의 property를 이용 시 다수의 트레픽이 발생하면 NPE 발생으로 인해 공부진행
    ### 특징
    *  Spring에서 전역으로 Request에 대한 정보를 가져오고자 할 때 사용하는 유틸성 클래스
    *  Controller에서 HttpServletRequest 생성자 주입을 통한 request 객체를 받아오는게아니라 Business Layer나 다른 쪽에서 쉽게 request정보를 가저올 수 있음
    *  ThreadLocal의 값이므로 다른 쓰레드(new Thread, 혹은 executor를 사용한 ThreadPool에서의 참조 등) 에서는 RequestContextHolder 의 Request값을 꺼내 쓸 수 없음
    *  HttpRequest가 오는 시점에 Servlet이 생성될 때에 초기화가 되어지고 Business Layer를 거친 뒤 Servlet 이 destroy될 때 clean 
+   
+   ### 고려사항
+   *  RequestContextHolder를 통해 얻어온 request 및 response를 다른 스레드에서 사용할 때에는 NPE가 발생할 수 있으므로 방어로직 및 메인 스레드에서 처리 후 넘겨주는 방식을 택해야함
+   *  RequestContextHolder의 currentrequestattributes()는 null일때 exception을 thorw하므로 보다 안전하게 사용가능
+   *  다수의 트레픽 (여러 스레드)이 발생 시 동기화 부분을 대비하여 jmeter 또는 jUnit 등으로 테스트 후에 운영배포를 진행해야함
   
   ## Feign Retry
    * Log적재 시스템의 호출 실패 및 적재 실패시 해당 로그가 유실이 됨을 대응하고자 공부진행
    ### 특징
-  
+   *  connection 을 가지고 오지 못했다거나, httpStatus code 가 0 이하인 invalid 한 status code 값이어야 RetryableException 이 발생
   
   ## Content-Type
    * 이미지를 처리하는 시스템에서 이미지타입 (jpeg, png..)가 중요함
