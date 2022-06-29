@@ -37,9 +37,14 @@
    ### 특징
    *  connection 을 가지고 오지 못했다거나, httpStatus code 가 0 이하인 invalid 한 status code 값이어야 RetryableException 이 발생
   
-  ## Content-Type
+  ## Content-Type ( MultipartFile )
    * 이미지를 처리하는 시스템에서 이미지타입 (jpeg, png..)가 중요함
+   * 상대방이 파일을 보낼 떄 Content-Type을 몰라 임의의 값을 줄 수가 있다. 이떄 실제 파일은 json, image/png 등이여도 application/octet-stream 등으로 와도 에러가 발생되지 않음
+     따라서 상대방이 준 Content-Type을 신뢰하고 그걸 이용하여 사용하면 안됨
+      + 방법 1 : 직접 그 파일을 read하여 Type을 알아내는 방법
   
   ## ImageIO
+   * ImageIO에서 write시 원래의 format을 알지 않고 임의로 할 시 이미지가 열리지 않는 에러 발생
+      + 참고 : https://stackoverflow.com/questions/11425521/how-to-get-the-formatexjpen-png-gif-of-image-file-bufferedimage-in-java
    * ImageIO를 통한 read()시 깨진 이미지나 읽지 못하는 이미지타입을 방어하는 로직이 없으면 안됨
    * ImageIO는 java에서 업데이틑 하고 있지 않으므로 다양한 구현체(TwelveMonkeys, JAI 등)를 이용하여 구현할 수 있음
