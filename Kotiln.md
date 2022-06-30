@@ -1,4 +1,7 @@
 
 # Kotlin
 
-## 1. 문법
+  ## Stream vs Sequence vs Collections
+    https://bcp0109.tistory.com/359
+   * Lazy Evaluation : 
+   * Eager Evaluation : 
