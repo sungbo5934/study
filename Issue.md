@@ -48,3 +48,9 @@
       + 참고 : https://stackoverflow.com/questions/11425521/how-to-get-the-formatexjpen-png-gif-of-image-file-bufferedimage-in-java
    * ImageIO를 통한 read()시 깨진 이미지나 읽지 못하는 이미지타입을 방어하는 로직이 없으면 안됨
    * ImageIO는 java에서 업데이틑 하고 있지 않으므로 다양한 구현체(TwelveMonkeys, JAI 등)를 이용하여 구현할 수 있음
+
+  ## @valid
+     * Kotlin에서는 spring valid 패키지내에있는 어노테이션 ( @notempty, @notnull..)등을 사용시 생성자 field에 적어 놓으면 작동하지 않음
+      + 생성자 field에 어노테이션 적용히 컴파일된 소스에는 생성자 쪽에 어노테이션 쪽에 붙기 때문에 작동이 안됨
+      + 생성자 field가 아닌 클래스 내에 field 위에 붙이면 정상 작동
+      + 이를 방지하기 위해 @field:{valid어노테이션} 방식으로 작성 시 해당 부분을 생성자 field가 아닌 실제 field로 인식하여 정상 
