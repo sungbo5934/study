@@ -20,3 +20,27 @@
    * return @foreach
 
   ## coroutine
+  
+
+  ## image
+   * BufferedImage
+   > TYPE_3BYTE_BGR 스타일 BGR 색상 모델에 해당하는 8비트 RGB 색상 구성 요소가 있는 이미지를 나타냅니다. Blue, Green, Red 색상은 3바이트에 저장됩니다.
+     TYPE_4BYTE_ABGR 3바이트 및 1바이트 알파에 저장된 파란색, 녹색 및 빨간색 색상이 있는 8비트 RGBA 색상 구성 요소가 있는 이미지를 나타냅니다.
+     TYPE_4BYTE_ABGR_PRE 3바이트 및 1바이트 알파에 저장된 파란색, 녹색 및 빨간색 색상이 있는 8비트 RGBA 색상 구성 요소가 있는 이미지를 나타냅니다.
+     TYPE_BYTE_BINARY 불투명한 바이트 패킹된 1, 2 또는 4비트 이미지를 나타냅니다.
+     TYPE_BYTE_GRAY 인덱싱되지 않은 부호 없는 바이트 회색조 이미지를 나타냅니다.
+     TYPE_BYTE_INDEXED 인덱싱된 바이트 이미지를 나타냅니다.
+     TYPE_CUSTOM 이미지 유형이 인식되지 않으므로 사용자 정의된 이미지여야 합니다.
+     TYPE_INT_ARGB 정수 픽셀로 압축된 8비트 RGBA 색상 구성 요소가 있는 이미지를 나타냅니다.
+      static int	TYPE_INT_ARGB_PRE
+      정수 픽셀로 압축된 8비트 RGBA 색상 구성 요소가 있는 이미지를 나타냅니다.
+      static int	TYPE_INT_BGR
+      Windows 또는 Solaris 스타일의 BGR 색상 모델에 해당하는 8비트 RGB 색상 구성 요소가 있는 이미지를 나타내며 Blue, Green 및 Red 색상이 정수 픽셀로 채워집니다.
+      static int	TYPE_INT_RGB
+      정수 픽셀로 압축된 8비트 RGB 색상 구성 요소가 있는 이미지를 나타냅니다.
+      static int	TYPE_USHORT_555_RGB
+      알파가 없는 5-5-5 RGB 색상 구성 요소(5비트 빨간색, 5비트 녹색, 5비트 파란색)가 있는 이미지를 나타냅니다.
+      static int	TYPE_USHORT_565_RGB
+      알파가 없는 5-6-5 RGB 색상 구성 요소(5비트 빨간색, 6비트 녹색, 5비트 파란색)가 있는 이미지를 나타냅니다.
+      static int	TYPE_USHORT_GRAY
+      인덱싱되지 않은 서명되지 않은 짧은 회색조 이미지를 나타냅니다.
