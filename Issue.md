@@ -48,6 +48,7 @@
       + 참고 : https://stackoverflow.com/questions/11425521/how-to-get-the-formatexjpen-png-gif-of-image-file-bufferedimage-in-java
    * ImageIO를 통한 read()시 깨진 이미지나 읽지 못하는 이미지타입을 방어하는 로직이 없으면 안됨
    * ImageIO는 java에서 업데이틑 하고 있지 않으므로 다양한 구현체(TwelveMonkeys, JAI 등)를 이용하여 구현할 수 있음
+   * BufferedImage 및 Graphics2D 객체 사용시 flush(), dispose()를 꼭 해주어야함 
 
   ## @valid
    * Kotlin에서는 spring valid 패키지내에있는 어노테이션 ( @notempty, @notnull..)등을 사용시 생성자 field에 적어 놓으면 작동하지 않음
