@@ -44,3 +44,11 @@
       알파가 없는 5-6-5 RGB 색상 구성 요소(5비트 빨간색, 6비트 녹색, 5비트 파란색)가 있는 이미지를 나타냅니다.
       static int	TYPE_USHORT_GRAY
       인덱싱되지 않은 서명되지 않은 짧은 회색조 이미지를 나타냅니다.
+      
+  ## private val, val, var
+   * private val
+      + getter/setter 를 모두 생성해주지 않아서 외부에서 접근 불가
+   * val
+      + setter 를 생성해주지 않아 외부에서 값 변경 불가
+   * var
+      + getter/setter 를 모두 생성해주므로 외부에서 자유롭게 활용가능
