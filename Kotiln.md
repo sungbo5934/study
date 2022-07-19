@@ -52,3 +52,19 @@
       + setter 를 생성해주지 않아 외부에서 값 변경 불가
    * var
       + getter/setter 를 모두 생성해주므로 외부에서 자유롭게 활용가능
+   * getter/setter custom
+   ```
+   class Rectangle {
+    var width = 10
+        set(value) {
+            field = value / 2
+        }
+    var height = 10
+        set(value) {
+            field = value / 2
+        }
+    var area: Int = 0
+        get() = width * height
+    }
+   ```
+   위와 같이 사용 가능하지만 주성생 field에서는 사용 불가    
