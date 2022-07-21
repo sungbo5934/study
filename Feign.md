@@ -19,3 +19,5 @@
       + IdleConnection : 활성 상태이지만 장기간 동안 어느 쪽 장치에서도 데이터가 전송되지 않은 커넥션 , keepalive time : 해당 시간 동안 통신이 없다면 커넥션은 죽임
    * 위의 connection pool 관련 의문은 sync방법이지만 async 방식에서는 Dispatcher.class를 이용하여 maxrequest, per request, excuterservice(thread pool) 등을 지정할수 있다.(이 부분은 아직 실험 x)
   ## circuit breaker
+   * Fallback
+      + fallbackfactory를 통한 에러 시 기본값을 줄는 로직을 작성 시 fallback에서의 exception종류는 aop를 통해 받는 exception 의종류가 다
