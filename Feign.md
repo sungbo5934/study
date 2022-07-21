@@ -20,4 +20,5 @@
    * 위의 connection pool 관련 의문은 sync방법이지만 async 방식에서는 Dispatcher.class를 이용하여 maxrequest, per request, excuterservice(thread pool) 등을 지정할수 있다.(이 부분은 아직 실험 x)
   ## circuit breaker
    * Fallback
-      + fallbackfactory를 통한 에러 시 기본값을 줄는 로직을 작성 시 fallback에서의 exception종류는 aop를 통해 받는 exception 의종류가 다
+      + fallbackfactory를 통한 에러 시 기본값을 줄는 로직을 작성 시 fallback에서의 exception종류는 aop를 통해 받는 exception의종류가 다름
+      + https://github.com/OpenFeign/feign/issues/386 를 참고하면 client 부분의 throw를 지정하면 랩핑된 UndeclaredThrowableException 이 오지않음
