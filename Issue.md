@@ -55,3 +55,7 @@
       + 생성자 field에 어노테이션 적용히 컴파일된 소스에는 생성자 쪽에 어노테이션 쪽에 붙기 때문에 작동이 안됨
       + 생성자 field가 아닌 클래스 내에 field 위에 붙이면 정상 작동
       + 이를 방지하기 위해 @field:{valid어노테이션} 방식으로 작성 시 해당 부분을 생성자 field가 아닌 실제 field로 인식하여 정상 
+
+  ## Spring
+   * multipart
+      + 상대방이 동일 변수명에 대해서 multipartfile 타입과 다른 타입(string, int ..)을 리스트 및 여러개 주었을때 HandlerMethodArgumentResolver를 구현한 ModelAttributeMethodProcessor의 constructAttribute()메소드 에서 해당 dto의 field로 타입미스 에러가 나면서 주입을 못하게되는 오류 발생, 또한 obejct형식으로 field을 선언 시 멀티파트 컨버터가 string 파람 컨버터보다 뒤에 있기에 덮어 쓰여지게되는 현상 
