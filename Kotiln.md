@@ -45,13 +45,15 @@
       static int	TYPE_USHORT_GRAY
       인덱싱되지 않은 서명되지 않은 짧은 회색조 이미지를 나타냅니다.
       
-  ## private val, val, var
+  ## private val, val, var, const val
    * private val
       + getter/setter 를 모두 생성해주지 않아서 외부에서 접근 불가
    * val
       + setter 를 생성해주지 않아 외부에서 값 변경 불가
    * var
       + getter/setter 를 모두 생성해주므로 외부에서 자유롭게 활용가능
+   * const val
+      + 컴파일 시점에서 할당하며 기본 자료형에서만 사용가능
    * getter/setter custom
    ```
    class Rectangle {
@@ -68,3 +70,34 @@
     }
    ```
    위와 같이 사용 가능하지만 주성생 field에서는 사용 불가    
+
+  ## 확장함수, 확장 프로퍼티
+   * 어떤 클래스의 멤버 메서드인 것처럼 호출할 수 있지만 그 클래스의 밖에 선언된 함수
+      + ex: collection<T>.max(), String.split(varang..)
+   * kotlin에서는 확장 함수를 통해 여러가지 java에서 제공하는 api말고 다양한 api 제공
+   * 확장 함수를 오버라이딩 할 수 없음 ( 정적호출 )
+   * 확장 프로퍼티는 위의 확장함수와 같은 개념이지만 선언시 get(), set()을 선언해서 사용
+  
+  ## 중위호출과 구조분해선언
+   * 클래스의 멤버 호출 시 사용하는 점(.)을 생략하고 함수 이름 뒤에 소괄호를 생략해 직관적인 이름을 사용하여 표현하는 방법
+      + ex: mapOf(1 to "one", 7 to "senver")에서 to
+   * infix키워를 사용하요 선언
+      + ex: infix fun Ayny.to(other: Any) = Pair(this, other)
+   * 구조분해 선언이란 객체가 가지고 있는 여러 값을 분해해서 여러 변수에 한꺼번에 초기화하는 방법
+   ```
+  val address = Address("서울", "서대문구", "연희동", "불필요사항")
+  val (city, gu, dong, _) = car
+  * 불필요한 사항은 '_'을통해 대체가능
+  >>> println("시 : ${city}, 구 : ${gu}, 동 : ${dong}")
+   ```
+  ## 로컬함수
+   * 메소드내에서 반복되는 구문을 메소드내에 추가로 메소드를 만들어서 사용하는 방법
+   ```
+ fun sacvUser(user: User){
+    fun validate(...){
+      //valid logic  
+    }
+    validate(..)
+    validate(..)
+  }
+   ```
