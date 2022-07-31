@@ -101,3 +101,10 @@
     validate(..)
   }
    ```
+  ## sealed
+  ## 주생성자, 부생성자
+  ## by (위임)
+  ## companion
+  ## object
+  
+  
