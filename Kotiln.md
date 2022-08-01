@@ -126,6 +126,41 @@
 ```
 
   ## 주생성자, 부생성자
+   * 주생성자 : 주로 사용하는 간략한 생성자로, 클래스 본문 밖에서 정의
+   * 부생성자 : 클래스 본문 안에서 정의
+```
+  // 주생성자 예시
+  // 가장 간단한 방법
+  // var/val를 붙이면 생성자가 되는 동시에 프로퍼티 (필드)가 생성됨
+  class User(val nickname: String)
+  
+  // init 함수를 통한 초기화진행
+  // data 클래스에서는 불가 (var/val 키워드 필수)
+  // _nickname이라는 프로퍼티 (필드)는 생성되지 않음
+  class User constructor(_nickname: String){
+    val nickname: String
+    init {
+        nickname = _nickname
+    }
+  }
+  
+  class User constructor(_nickname: String){
+    val nickname: _nickname
+  }
+  
+  // 부생성자 예시
+  // 주생성자 말고 다른 변수를 받아 프로퍼티에 대입하고 싶을때 사용함
+  class User(val nickname: String){
+    private val age:Int = 0
+  
+    consturctor(nickname: String, age: Int): this(nickname){
+      this.age = age
+    }
+  }
+  
+```
+  
+  ## 주생성자, 부생성자
   ## by (위임)
   ## companion
   ## object
