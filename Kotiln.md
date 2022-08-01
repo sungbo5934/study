@@ -92,16 +92,39 @@
    ```
   ## 로컬함수
    * 메소드내에서 반복되는 구문을 메소드내에 추가로 메소드를 만들어서 사용하는 방법
-   ```
- fun sacvUser(user: User){
+ ```
+  fun sacvUser(user: User){
     fun validate(...){
       //valid logic  
     }
     validate(..)
     validate(..)
   }
-   ```
-  ## sealed
+ ```
+  ## sealed clase
+   * Super class(Sealed class)를 상속받는 Child 클래스의 종류 제한하는 특성을 갖고 있는 클래스
+   * 같은 패키지의 자식 클래스만 상속가능 ( 모든 패키지에서 컴파일러가 검색하기에는 리소스낭비 )
+   * 특징
+```
+  sealed class Person()
+
+  class Arm : Person()
+  class Face : Person()
+  class Hand : Person()
+
+  //위와 깉이 선언 시 
+
+  fun getWhen(type: Person): String{
+    when(type){
+      is Arm -> "팔"
+      is Face -> "얼굴"
+      is Hand -> "손"
+    //else -> Exception()
+    //위와 같이 컴파일러가 이미 child클래스를 다 알 수 있기때문에 else를 작성할 필요가 없어짐
+    }
+  }
+```
+
   ## 주생성자, 부생성자
   ## by (위임)
   ## companion
