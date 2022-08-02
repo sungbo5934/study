@@ -160,7 +160,32 @@
   
 ```
 
-  ## by (위임)
+  ## by (위임, delegate)
+   * 어떤 클래스의 멤버를 참조 없이 호출하고 싶을 때 사용하는 선언 방식
+   * 어떤 기능을 자신이 처리하지 않고 다른 객체에 위임을 시켜 그 객체가 일을 처리하도록 하는 것
+   * 코틀린의 기본 라이브러리는 상속할 수 없도록 정의되어 있다. 실제로 List 등의 클래스는 모두 open이 아니다. 이렇게 함으로써 라이브러리의 무분별한 상속을 막을 수 있지만, 클래스의 기능을 확장하기 어려워지는 문제가 발생
+```
+  // 1
+  interface Animal {
+      fun eat()
+  }
+  // 2
+  class Cat : Animal {
+      override fun eat() {
+          println("eat() at Cat")
+      }
+  }
+  // 3
+  val cat = Cat()
+  // 4
+  class Robot : Animal by cat
+
+  1. 인터페이스 Animal을 정의
+  2. 클래스 Cat을 선언하고, Animal을 구현하였다. Cat은 추상 클래스 또는 인터페이스가 아니므로 eat()을 정의함
+  3. Cat의 객체 cat을 만듬
+  4. 클래스 Robot을 선언하고, Animal을 구현하였다. Robot 역시 eat()을 정의해야 할 것 같지만, by 키워드를 사용하여 cat에게 정의를 위임
+```
+  
   ## companion
   ## object
   
