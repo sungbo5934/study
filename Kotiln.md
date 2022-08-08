@@ -188,5 +188,5 @@
   
   ## companion
   ## object
-  
-  
+  ## lambda
+  ## :: (double clon)
