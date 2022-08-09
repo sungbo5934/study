@@ -59,3 +59,7 @@
   ## Spring
    * multipart
       + 상대방이 동일 변수명에 대해서 multipartfile 타입과 다른 타입(string, int ..)을 리스트 및 여러개 주었을때 HandlerMethodArgumentResolver를 구현한 ModelAttributeMethodProcessor의 constructAttribute()메소드 에서 해당 dto의 field로 타입미스 에러가 나면서 주입을 못하게되는 오류 발생, 또한 obejct형식으로 field을 선언 시 멀티파트 컨버터가 string 파람 컨버터보다 뒤에 있기에 덮어 쓰여지게되는 현상 발생
+
+  ## Redis
+   * redisson
+      + df
