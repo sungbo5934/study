@@ -64,7 +64,7 @@
    * redisson
       + pub/sub 시 publish하는 서버에서 serializable을 implement한 객체를 그대로 redis에 호출 시 sub하는 서버에서는 같은 코덱은 쓰더라도 동일 패키지에 class가 존재해야함
       + codec을 별도로 사용시 bean에 등록하여 사용해야함
-      + serializeable의 패키지 구조까지 파악하는 이유를 
+      + 직렬화 및 역직렬화시 동일 패키지 및 동일 필드 구성에대한이유 -> https://techblog.woowahan.com/2551/
   
   ## 비동기 / 논블럭킹
    * webclient
