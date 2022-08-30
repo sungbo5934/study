@@ -76,4 +76,5 @@
 
   ## Serialize / Deserialize
    * jackson
-      + data class 에서 상대방이 대문자로 보낼 시 해당 어노테이션을 붙이면 자동으로 파싱해서 deserialize를 해줌 ( @JsonNaming(value = PropertyNamingStrategies.UpperSnakeCaseStrategy::class) )
+      + data class 에서 상대방이 대문자로 보낼 시 해당 어노테이션을 붙이면 자동으로 파싱해서 deserialize를 해줌  
+        [ @JsonNaming(value = PropertyNamingStrategies.UpperSnakeCaseStrategy::class) ]
