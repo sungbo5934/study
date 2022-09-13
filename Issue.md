@@ -78,6 +78,25 @@
    * jackson
       + data class 에서 상대방이 대문자로 보낼 시 해당 어노테이션을 붙이면 자동으로 파싱해서 deserialize를 해줌  
         [ @JsonNaming(value = PropertyNamingStrategies.UpperSnakeCaseStrategy::class) ]
+      + lateinit으로 필드를 초기화 시 아직 init를 하지 못하 상태에서 serialize시 에러 발생  
+      ```
+        //lateinit feild를 디컴파일 하면 getter는 아래와 같이 getter에서 exception을 보내므로 @JsonGetter이용
+        @NotNull
+        public final String getHeaderJson() {
+           String var1 = this.headerJson;
+           if (var1 != null) {
+              return var1;
+           } else {
+              Intrinsics.throwUninitializedPropertyAccessException("headerJson");
+              return null;
+           }
+        }
+        
+        @JsonGetter("selfieImgInfo")
+        fun lateInitSelfieImgInfo(): ImageDTO?{
+            return runCatching { selfieImgInfo }.getOrNull()
+        }
+      ```
         
   ## Docker
   * compose
