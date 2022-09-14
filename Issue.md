@@ -65,6 +65,9 @@
       + pub/sub 시 publish하는 서버에서 serializable을 implement한 객체를 그대로 redis에 호출 시 sub하는 서버에서는 같은 코덱은 쓰더라도 동일 패키지에 class가 존재해야함
       + codec을 별도로 사용시 bean에 등록하여 사용해야함
       + 직렬화 및 역직렬화시 동일 패키지 및 동일 필드 구성에대한이유 -> https://techblog.woowahan.com/2551/
+   * lettuce
+      + non-blocking, non-transactional 오퍼레이션은 커넥션 풀을 설정해도 하나의 포트로만 통신 
+        ( 참고 : https://parkcheolu.tistory.com/192 , https://stackoverflow.com/a/63720409 )
   
   ## 비동기 / 논블럭킹
    * webclient
