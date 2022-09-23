@@ -106,3 +106,17 @@
       + mysql 8 버전 이상과 java 기반 서버와 연동 시 타서비스에서 jdbc connection 옵션 (url)에 useSSL을 false로 설정하였다면 allowPublicKeyRetrieval(defautl : false) 옵션을 꼭 true로 주어야함  
       ( 참고 : https://stackoverflow.com/a/50438872)  
      + 컨테이너 간의 호출이 필요시 localhost, 127.0.0.1 이외 컴포즈.yml 파일의 서비스 name을 통해 호출 해야함 ( redis:6379 )
+
+  ## Frontend
+  * cors
+      + front서버와 백엔드 api 서버의 도메인이 다를때 [cors](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) 이슈가 발생함 이때 서버에서 설정을 주어아햠
+      ```
+      @Configuration
+      class WebConfig : WebMvcConfigurer {
+          override fun addCorsMappings(registry: CorsRegistry) {
+              registry.addMapping("/**")
+                  .allowedOrigins("127.0.0.1:8080") // 특정 도메인 허용
+                  .allowedOriginPatterns("*")       // 특정 패턴 
+          }
+      }
+      ```
