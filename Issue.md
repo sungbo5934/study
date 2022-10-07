@@ -107,6 +107,11 @@
       ( 참고 : https://stackoverflow.com/a/50438872)  
      + 컨테이너 간의 호출이 필요시 localhost, 127.0.0.1 이외 컴포즈.yml 파일의 서비스 name을 통해 호출 해야함 ( redis:6379 )
 
+  ## ObjectMapper
+  * form-data
+  * application/json
+
+
   ## Frontend
   * cors
       + front서버와 백엔드 api 서버의 도메인이 다를때 [cors](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) 이슈가 발생함 이때 서버에서 설정을 주어아햠
