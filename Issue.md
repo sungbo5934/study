@@ -32,11 +32,15 @@
    *  RequestContextHolder의 currentrequestattributes()는 null일때 exception을 thorw하므로 보다 안전하게 사용가능
    *  다수의 트레픽 (여러 스레드)이 발생 시 동기화 부분을 대비하여 jmeter 또는 jUnit 등으로 테스트 후에 운영배포를 진행해야함
   
-  ## Feign Retry
-   * Log적재 시스템의 호출 실패 및 적재 실패시 해당 로그가 유실이 됨을 대응하고자 공부진행
-   ### 특징
-   *  connection 을 가지고 오지 못했다거나, httpStatus code 가 0 이하인 invalid 한 status code 값이어야 RetryableException 이 발생
-  
+  ## Feign
+   ### Retry
+     1. Log적재 시스템의 호출 실패 및 적재 실패시 해당 로그가 유실이 됨을 대응하고자 공부진행
+     2. connection 을 가지고 오지 못했다거나, httpStatus code 가 0 이하인 invalid 한 status code 값이어야 RetryableException 이 발생
+   ### Form-Data
+      1. form-data를 통한 호출 시 kotlin의 경우 pojo를 이용한다면 val로 할 시 final로 인식되어 값이 채워지지않음 var를 이용
+      2. feign.form.FormEncoder의 encode를 호출 됨 디버그 시 이용하면됨
+      3. @formproperty 어노테이션을 통해 key를 지정할 수 있음  
+     
   ## Content-Type ( MultipartFile )
    * 이미지를 처리하는 시스템에서 이미지타입 (jpeg, png..)가 중요함
    * 상대방이 파일을 보낼 떄 Content-Type을 몰라 임의의 값을 줄 수가 있다. 이떄 실제 파일은 json, image/png 등이여도 application/octet-stream 등으로 와도 에러가 발생되지 않음
@@ -59,6 +63,7 @@
   ## Spring
    * multipart
       + 상대방이 동일 변수명에 대해서 multipartfile 타입과 다른 타입(string, int ..)을 리스트 및 여러개 주었을때 HandlerMethodArgumentResolver를 구현한 ModelAttributeMethodProcessor의 constructAttribute()메소드 에서 해당 dto의 field로 타입미스 에러가 나면서 주입을 못하게되는 오류 발생, 또한 obejct형식으로 field을 선언 시 멀티파트 컨버터가 string 파람 컨버터보다 뒤에 있기에 덮어 쓰여지게되는 현상 발생
+      + multipart의 경우 controller에 바인딩 될때 생성자를 통해 바인딩 되며 코틀린의 경우 코틀린 전용 delegate를 통해 생성됨 org.springframework.beans.BeanUtils -> instantiateClass -> KotlinDelegate.instantiateClass() 참고
 
   ## Redis
    * redisson
@@ -108,7 +113,7 @@
      + 컨테이너 간의 호출이 필요시 localhost, 127.0.0.1 이외 컴포즈.yml 파일의 서비스 name을 통해 호출 해야함 ( redis:6379 )
 
   ## ObjectMapper
-  * form-data
+  * form-data를 통한 controller로 인입시 @requestbody 필요 없이 
   * application/json
 
 
