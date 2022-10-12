@@ -39,7 +39,9 @@
    ### Form-Data
       1. form-data를 통한 호출 시 kotlin의 경우 pojo를 이용한다면 val로 할 시 final로 인식되어 값이 채워지지않음 var를 이용
       2. feign.form.FormEncoder의 encode를 호출 됨 디버그 시 이용하면됨
-      3. @formproperty 어노테이션을 통해 key를 지정할 수 있음  
+      3. @formproperty 어노테이션을 통해 key를 지정할 수 있음
+   ### coroutine
+      1. https://github.com/spring-cloud/spring-cloud-openfeign/issues/661 을 모티러닝 하여 suspend 지원이 되는지 확인하자
      
   ## Content-Type ( MultipartFile )
    * 이미지를 처리하는 시스템에서 이미지타입 (jpeg, png..)가 중요함
