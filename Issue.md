@@ -36,12 +36,10 @@
    ### Retry
      1. Log적재 시스템의 호출 실패 및 적재 실패시 해당 로그가 유실이 됨을 대응하고자 공부진행
      2. connection 을 가지고 오지 못했다거나, httpStatus code 가 0 이하인 invalid 한 status code 값이어야 RetryableException 이 발생
-   
    ### Form-Data
       1. form-data를 통한 호출 시 kotlin의 경우 pojo를 이용한다면 val로 할 시 final로 인식되어 값이 채워지지않음 var를 이용
       2. feign.form.FormEncoder의 encode를 호출 됨 디버그 시 이용하면됨
       3. @formproperty 어노테이션을 통해 key를 지정할 수 있음
-   
    ### coroutine
       1. https://github.com/spring-cloud/spring-cloud-openfeign/issues/661 을 모니터 하여 suspend 지원이 되는지 확인하자
       2. 경량스레드라는 이유는 continuation을 통해 일시정지 및 재개를 하여도 해당 변수안에서 저장한 데이터를 이용하므로 스레드 문맥교환이 적음
