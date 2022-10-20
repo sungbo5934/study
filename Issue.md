@@ -116,8 +116,8 @@
      + 컨테이너 간의 호출이 필요시 localhost, 127.0.0.1 이외 컴포즈.yml 파일의 서비스 name을 통해 호출 해야함 ( redis:6379 )
 
   ## ObjectMapper
-  * form-data를 통한 controller로 인입시 @requestbody 필요 없이 
-  * application/json
+  * form-data를 통한 controller로 인입시 @requestbody 필요 없음
+  * application/json 을 통한 controller 인입시에는 @requestbody 가 필요함 
 
 
   ## Frontend
