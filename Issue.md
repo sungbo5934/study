@@ -36,12 +36,18 @@
    ### Retry
      1. Log적재 시스템의 호출 실패 및 적재 실패시 해당 로그가 유실이 됨을 대응하고자 공부진행
      2. connection 을 가지고 오지 못했다거나, httpStatus code 가 0 이하인 invalid 한 status code 값이어야 RetryableException 이 발생
+   
    ### Form-Data
       1. form-data를 통한 호출 시 kotlin의 경우 pojo를 이용한다면 val로 할 시 final로 인식되어 값이 채워지지않음 var를 이용
       2. feign.form.FormEncoder의 encode를 호출 됨 디버그 시 이용하면됨
       3. @formproperty 어노테이션을 통해 key를 지정할 수 있음
+   
    ### coroutine
-      1. https://github.com/spring-cloud/spring-cloud-openfeign/issues/661 을 모티러닝 하여 suspend 지원이 되는지 확인하자
+      1. https://github.com/spring-cloud/spring-cloud-openfeign/issues/661 을 모니터 하여 suspend 지원이 되는지 확인하자
+      2. 경량스레드라는 이유는 continuation을 통해 일시정지 및 재개를 하여도 해당 변수안에서 저장한 데이터를 이용하므로 스레드 문맥교환이 적음
+      3. 여러개의 스레드를 통한 동시성을 제공하는것이 아니라 cpu 코어 처럼 루틴들을 번갈아가며 조금씩 진행하면서 동시성을 제공함
+      4. controller suspend를 통해 논블럭킹 api를 만들때 aop ( @around )의 procced()의 리턴 값이 코루틴임 이때 어떻게 응답값을 핸들링 할 수 있을까?  
+         이슈 트래킹 -> https://github.com/spring-projects/spring-framework/issues/22462
      
   ## Content-Type ( MultipartFile )
    * 이미지를 처리하는 시스템에서 이미지타입 (jpeg, png..)가 중요함
@@ -83,7 +89,7 @@
       + 메인 스레드 즉 기본 스레드의 블럭킹으로 인한 스레드 유휴시간을 줄이면서 그로 인해 해당 스레드는 스레드풀에 반납되어 더 많은 리퀘스트를 받을 수 있음
       + 비동기를 하기위해선 당연히 추가적인 스레드가 필요로함, 그 스레드 갯수를 줄이기 위해서 논블럭킹을 사용한다는 생각보단 쉬는 스레드를 줄인다는 관점으로 보면 편리
       + webclient와 코루틴을 통한 테스트 시 코루틴에서 사용한 스레드를 스레드 풀을 반납하였지만 갯수가 줄어들지않는 이유는 최초에 코루틴 (디스패처/io)을 생성시 스레드 3개가 미리 활성화 시켜놓으므로 4개이상의 코루틴 생성 시 스레드 갯수 이점을 확보 할 수 있음
-      + kotlin을 통한 이용시 List<T> 처럼 타입파라미터의 notnull을 선언하여도 bodyToMono, bodyToFlux를 통해 파싱 시 해당 리스트 안에 null이 
+      + kotlin을 통한 이용시 List<T> 처럼 타입파라미터의 notnull을 선언하여도 bodyToMono, bodyToFlux를 통해 파싱 시 해당 리스트 안에 null이 들어옴
 
   ## Serialize / Deserialize
    * jackson
