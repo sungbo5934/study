@@ -190,3 +190,16 @@
   ## object
   ## lambda
   ## :: (double clon)
+  ## corountine
+   * 기본개념
+      + 경량 스레드라는 개념은 여러개의 동시성을 요구할때 기존이라면 스레드를 새로 생성하여 구현하지만 코루틴의 여러 루틴들을 조금씩 실행(중지 및 재개)하면서 동시성을 보장해줌
+      + 1개의 스레드로 여러개의 스레드를 이용하는 것처럼 할 수 있어(continuation 이용) 효율성이 올라감
+   * 참고
+      + https://techblog.woowahan.com/7349/
+      + https://www.youtube.com/watch?v=eJF60hcz3EU
+      + https://www.youtube.com/watch?v=IQf-vtIC-Uc&t=6s
+   * suspend
+      + 일시 중단 함수를 의미하면 suspend 키워드를 붙힌 함수는 컴파일러에 의해 continuation 파라미터가 추가되고 해당 파라미터를 이용하여 일시 중단 및 재개 시 콜백 스타일로 구현됨   [cps](https://en.wikipedia.org/wiki/Continuation-passing_style)
+  
+  
+  
