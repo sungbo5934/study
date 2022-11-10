@@ -20,8 +20,12 @@
    * return @foreach
 
   ## coroutine
-  
-
+   * spring 5.3.23 버전 부터 MVC에서 suspend 함수 지원 ( KotlinDetector.isSuspendingFunction(method) )
+   * mvc 기준 controller suspend 이용 시 메인 스레드 (톰캣스레드) 가 코루틴 빌더를 만나기전까지는 코루틴으로 실행되지않으므로 launch또는 async로 빌더를 통해 구현해서 시작해야함
+   * mdc context의 이동이 webclient에서 필요하므로 filter를 통해 해당 시점에서 mdc copy를 할 수 있게 지정해야함 (http://ttddyy.github.io/mdc-with-webclient-in-webmvc/)
+   * tomcat thread의 스케줄러는 request와 response의 스레드를 동일하게 잡아주지 않으므로 interceptor의 prehandle을 이용하거나 스케줄러의 custom을 공부해서 구현해야함
+   * aop 및 mvc 환경에서 코루틴을 호출 시 컴파일러가 continuation을 파라미터를 잡아 놓았기 때문에 해당 메소드 arg 마지막에 런타임 환경해서 주입해 줘야함
+ 
   ## image
    * BufferedImage
    > TYPE_3BYTE_BGR 스타일 BGR 색상 모델에 해당하는 8비트 RGB 색상 구성 요소가 있는 이미지를 나타냅니다. Blue, Green, Red 색상은 3바이트에 저장됩니다.
