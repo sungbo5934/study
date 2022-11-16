@@ -70,6 +70,7 @@
    * multipart
       + 상대방이 동일 변수명에 대해서 multipartfile 타입과 다른 타입(string, int ..)을 리스트 및 여러개 주었을때 HandlerMethodArgumentResolver를 구현한 ModelAttributeMethodProcessor의 constructAttribute()메소드 에서 해당 dto의 field로 타입미스 에러가 나면서 주입을 못하게되는 오류 발생, 또한 obejct형식으로 field을 선언 시 멀티파트 컨버터가 string 파람 컨버터보다 뒤에 있기에 덮어 쓰여지게되는 현상 발생
       + multipart의 경우 controller에 바인딩 될때 생성자를 통해 바인딩 되며 코틀린의 경우 코틀린 전용 delegate를 통해 생성됨 org.springframework.beans.BeanUtils -> instantiateClass -> KotlinDelegate.instantiateClass() 참고
+      + 해당 request가 끝난시점에서는 tomcat의 temp폴더에서 임시저장된 multipartfile이 삭제 되어 접근하면 nosuchfileexception이 발생함 따라서 request 진행 이후 후 처리시 해당 file의 접근이 필요할때는 request가 끝나기 전에 임식 객체에 저장하고 해당 객체를 통해 후 처리 로직을 해야함
 
   ## Redis
    * redisson
@@ -145,3 +146,9 @@
    * 아무리 jvm의 gc를 통해 메모리 관리를 해준다고 마음대로 소스를 코드 짜면안된다..
       + 무거운 객체 (메모리를 많이 잡는)는 베이스 객체에 넣어서 움직이면 안되고 해당 메소드 안에서 다 처리 후 가볍게 만든 정보를 통해 움직여야함
       + file.getbytes(), file.getInpustream() 처럼 불러올때는 매번 새로운 객체로 생성되어서 온다 이처럼 새로운 객체를 만들어서 주는 것인지 기존의 객체를 돌려주는 것인지 파악 후 사용해야함
+
+  ## HttpClient
+   ### 필수 고려사항
+     1. connection time을 꼭 파악해야함, client단의 connection close timeout 시간과 상대 서버 connection close timeout의 시간이 다를 때 왠만한 httpclient들은 connection pool에서 가저올때 그 connection이 정상인지 파악하지만 해당 connection이 정상이다라고 판단하고 request를 보낼 시점에 상대방 서버의 timeout에 걸려 close 됨 따라서 상대측 서버보다 timeout 시간을 적게가저가거나, keep-alive 을 이용하여 서로의 timeout을 맞춰야함 ( 특히 로드밸런서와의 통신 시 많이 발생함 )
+
+  
