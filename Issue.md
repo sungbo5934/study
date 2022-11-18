@@ -90,7 +90,10 @@
       + webclient와 코루틴을 통한 테스트 시 코루틴에서 사용한 스레드를 스레드 풀을 반납하였지만 갯수가 줄어들지않는 이유는 최초에 코루틴 (디스패처/io)을 생성시 스레드 3개가 미리 활성화 시켜놓으므로 4개이상의 코루틴 생성 시 스레드 갯수 이점을 확보 할 수 있음
       + kotlin을 통한 이용시 List<T> 처럼 타입파라미터의 notnull을 선언하여도 bodyToMono, bodyToFlux를 통해 파싱 시 해당 리스트 안에 null이 들어옴
       + linux 환경에서는 netty 스레드 풀의 epoll을 사용하고 mac에서는 nio 스레드를 사용함, 그이유에대해서 공부해야함
-      + connector 의 timeout custom을 해서 꼭 해당 서버에 맞는 스펙으로 해야함 (https://lasel.kr/archives/740, https://tw-you.tistory.com/entry/WebClient-%EC%83%9D%EC%84%B1-%EB%B0%A9%EB%B2%95-%EB%B0%8F-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-WebClient-%EC%89%BD%EA%B2%8C-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0)
+      + connector 의 timeout custom을 해서 꼭 해당 서버에 맞는 스펙으로 해야함 ( 참고  
+        https://lasel.kr/archives/740 ,  
+        https://tw-you.tistory.com/entry/WebClient-%EC%83%9D%EC%84%B1-%EB%B0%A9%EB%B2%95-%EB%B0%8F-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-WebClient-%EC%89%BD%EA%B2%8C-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0   
+  )
   
   ## Serialize / Deserialize
    * jackson
