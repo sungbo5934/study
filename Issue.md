@@ -89,7 +89,9 @@
       + 비동기를 하기위해선 당연히 추가적인 스레드가 필요로함, 그 스레드 갯수를 줄이기 위해서 논블럭킹을 사용한다는 생각보단 쉬는 스레드를 줄인다는 관점으로 보면 편리
       + webclient와 코루틴을 통한 테스트 시 코루틴에서 사용한 스레드를 스레드 풀을 반납하였지만 갯수가 줄어들지않는 이유는 최초에 코루틴 (디스패처/io)을 생성시 스레드 3개가 미리 활성화 시켜놓으므로 4개이상의 코루틴 생성 시 스레드 갯수 이점을 확보 할 수 있음
       + kotlin을 통한 이용시 List<T> 처럼 타입파라미터의 notnull을 선언하여도 bodyToMono, bodyToFlux를 통해 파싱 시 해당 리스트 안에 null이 들어옴
-
+      + linux 환경에서는 netty 스레드 풀의 epoll을 사용하고 mac에서는 nio 스레드를 사용함, 그이유에대해서 공부해야함
+      + connector 의 timeout custom을 해서 꼭 해당 서버에 맞는 스펙으로 해야함 (https://lasel.kr/archives/740, https://tw-you.tistory.com/entry/WebClient-%EC%83%9D%EC%84%B1-%EB%B0%A9%EB%B2%95-%EB%B0%8F-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-WebClient-%EC%89%BD%EA%B2%8C-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0)
+  
   ## Serialize / Deserialize
    * jackson
       + data class 에서 상대방이 대문자로 보낼 시 해당 어노테이션을 붙이면 자동으로 파싱해서 deserialize를 해줌  
@@ -151,5 +153,6 @@
    ### 필수 고려사항
    * connection time을 꼭 파악해야함, client단의 connection close timeout 시간과 상대 서버 connection close timeout의 시간이 다를 때 왠만한 httpclient들은 connection pool에서 가저올때 그 connection이 정상인지 파악하지만 해당 connection이 정상이다라고 판단하고 request를 보낼 시점에 상대방 서버의 timeout에 걸려 close 됨 따라서 상대측 서버보다 timeout 시간을 적게가저가거나, keep-alive 을 이용하여 서로의 timeout을 맞춰야함 ( 특히 로드밸런서와의 통신 시 많이 발생함 )
   * [wireshark](https://www.wireshark.org/download.html)를 통하여 해당 connection이 idleTimeout설정에 맞게 사용되는지 
+
 
   
