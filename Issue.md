@@ -155,7 +155,13 @@
   ## HttpClient
    ### 필수 고려사항
    * connection time을 꼭 파악해야함, client단의 connection close timeout 시간과 상대 서버 connection close timeout의 시간이 다를 때 왠만한 httpclient들은 connection pool에서 가저올때 그 connection이 정상인지 파악하지만 해당 connection이 정상이다라고 판단하고 request를 보낼 시점에 상대방 서버의 timeout에 걸려 close 됨 따라서 상대측 서버보다 timeout 시간을 적게가저가거나, keep-alive 을 이용하여 서로의 timeout을 맞춰야함 ( 특히 로드밸런서와의 통신 시 많이 발생함 )
-  * [wireshark](https://www.wireshark.org/download.html)를 통하여 해당 connection이 idleTimeout설정에 맞게 사용되는지 
-
+   * [wireshark](https://www.wireshark.org/download.html)를 통하여 해당 connection이 idleTimeout설정에 맞게 사용되는지 
+   * server timeout
+      + connection timeout / request timeout : 서버 측에서 클라이언트와 커넥션이 맺어저 있을때 해당 시간 만큼 초과하여 아무런 데이터 요청 및 흐름이 없으면 클라이언트와의 커넥션은 끊는걸 의미 ( status 408 )
+   * client timeout
+        + connection timeout : server 측과 커넥션연결을 시도하는 시간으로 해당 시간 만큼 커넥션 연결을 시도하다가 연결이 되지않는 다면 실패함 ( SYN 을 보내고 SYN + ACK 가 상대서버에서 와야함 )
+        + read / socket timeout : 서버에게 요청을 보내는 총 시간제한
+        + idle timeout : 유휴 커넥션을 유지할 시간 ( 위의 필수 고려사항 #1 참고 )
+  
 
   
